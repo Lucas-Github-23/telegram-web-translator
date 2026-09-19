@@ -1,0 +1,199 @@
+/* Estilo nativo Telegram Web / Desktop - 100% utilitário e integrado */
+
+/* Contêiner do texto traduzido nas mensagens */
+.tg-trans-wrapper {
+  display: inline;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  transition: opacity 0.1s ease;
+}
+
+/* Estado de carregamento sutil */
+.tg-trans-loading {
+  opacity: 0.65;
+  transition: opacity 0.1s ease;
+}
+
+/* Notificação discreta no canto superior direito */
+.tg-trans-toast {
+  position: fixed;
+  top: 16px;
+  right: 20px;
+  bottom: auto;
+  left: auto;
+  transform: translateY(0);
+  background: #17212b;
+  color: #f5f5f5;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 11.5px;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.tg-trans-toast.hiding {
+  opacity: 0;
+  transform: translateY(-4px);
+}
+
+.tg-trans-toast-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #5288c1;
+}
+
+/* ==================================================== */
+/* DOCK DE TRADUÇÃO EM TEMPO REAL COM RETRO-TRADUÇÃO   */
+/* ==================================================== */
+
+.tg-live-box {
+  position: fixed;
+  z-index: 999997;
+  background: #17212b;
+  border: 1px solid #242f3d;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+  padding: 6px 10px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #f5f5f5;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  pointer-events: auto;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.12s ease, transform 0.12s ease;
+}
+
+.tg-live-box.hiding {
+  opacity: 0;
+  transform: translateY(4px);
+  pointer-events: none;
+}
+
+.tg-live-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.tg-live-main-content {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+}
+
+.tg-live-lang-tag {
+  display: inline-block;
+  padding: 1px 4px;
+  font-size: 10px;
+  font-weight: 600;
+  border-radius: 3px;
+  background: rgba(82, 136, 193, 0.15);
+  color: #64b5f6;
+  border: 1px solid rgba(100, 181, 246, 0.3);
+  letter-spacing: 0.3px;
+  flex-shrink: 0;
+}
+
+.tg-live-main-text {
+  font-size: 12.5px;
+  line-height: 1.35;
+  color: #ffffff;
+  word-break: break-word;
+}
+
+.tg-live-actions {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.tg-live-apply-btn {
+  background: #242f3d;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #e4e4e5;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.12s, border-color 0.12s, color 0.12s;
+}
+
+.tg-live-apply-btn:hover {
+  background: #5288c1;
+  border-color: #5288c1;
+  color: #ffffff;
+}
+
+.tg-live-close-btn {
+  background: transparent;
+  border: none;
+  color: #7f8b99;
+  font-size: 13px;
+  line-height: 1;
+  padding: 2px 4px;
+  cursor: pointer;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.12s, background-color 0.12s;
+}
+
+.tg-live-close-btn:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Linha de retro-tradução para conferência */
+.tg-live-back-row {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  font-size: 11px;
+  color: #7f8b99;
+  line-height: 1.25;
+  padding-top: 3px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.tg-live-back-icon {
+  color: #5288c1;
+  font-weight: 600;
+  font-size: 10px;
+}
+
+.tg-live-back-label {
+  color: #7f8b99;
+  font-weight: 500;
+}
+
+.tg-live-back-text {
+  color: #d1d5db;
+  font-style: normal;
+  word-break: break-word;
+}

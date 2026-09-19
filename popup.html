@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Telegram Web Translator</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="app">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-title">
+        <span class="app-name">Telegram Translator</span>
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox" id="toggleEnabled" checked>
+        <span class="toggle-track"></span>
+      </label>
+    </header>
+
+    <!-- Main Content -->
+    <main class="content">
+      <!-- Motor de Tradução (Google vs Gemini IA) -->
+      <section class="section">
+        <div class="section-header">
+          <span class="section-title">Motor de Tradução</span>
+        </div>
+        <div class="segmented-control" id="engineSelector">
+          <button type="button" class="segment active" data-engine="google">Google</button>
+          <button type="button" class="segment segment-with-icon" data-engine="gemini">
+            <svg class="engine-icon" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C12 7.52 7.52 12 2 12C7.52 12 12 16.48 12 22C12 16.48 16.48 12 22 12C16.48 12 12 7.52 12 2Z"/>
+            </svg>
+            <span>Gemini</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Configuração da API Gemini (Exibido se Gemini ativo) -->
+      <section class="section" id="geminiSection" style="display: none;">
+        <div class="section-header">
+          <span class="section-title">Chave API do Gemini</span>
+        </div>
+        <div class="input-container">
+          <input type="password" id="geminiApiKeyInput" placeholder="Cole sua API Key aqui">
+        </div>
+        <p class="section-caption">
+          Grátis até 1.500 msgs/dia. <a href="https://aistudio.google.com/app/apikey" target="_blank" class="caption-link">Gerar chave gratuita ↗</a>
+        </p>
+      </section>
+
+      <!-- Modo de Leitura (Hover) -->
+      <section class="section">
+        <div class="section-header">
+          <span class="section-title">Modo de Leitura (Hover)</span>
+        </div>
+        <div class="segmented-control" id="modeSelector">
+          <button type="button" class="segment active" data-mode="hold">Segurar</button>
+          <button type="button" class="segment" data-mode="toggle">Alternar (Trava)</button>
+        </div>
+        <p class="section-caption" id="modeCaption">
+          Segure a tecla e passe o mouse. Soltou, volta ao original.
+        </p>
+      </section>
+
+      <!-- Idioma de Leitura -->
+      <section class="section">
+        <div class="section-header">
+          <span class="section-title">Traduzir Mensagens Recebidas para</span>
+        </div>
+        <div class="select-container">
+          <select id="targetLangSelect">
+            <option value="pt" selected>Português (Brasil)</option>
+            <option value="en">Inglês (English)</option>
+            <option value="es">Espanhol (Español)</option>
+            <option value="fr">Francês (Français)</option>
+            <option value="de">Alemão (Deutsch)</option>
+            <option value="it">Italiano (Italiano)</option>
+            <option value="ru">Russo (Русский)</option>
+            <option value="ja">Japonês (日本語)</option>
+            <option value="zh-CN">Chinês (中文)</option>
+          </select>
+        </div>
+      </section>
+
+      <!-- Idioma de Envio (Digitação) -->
+      <section class="section">
+        <div class="section-header">
+          <span class="section-title">Traduzir o que Digito para</span>
+          <kbd class="mini-shortcut">Tab</kbd>
+        </div>
+        <div class="select-container">
+          <select id="writeTargetLangSelect">
+            <option value="ru" selected>Russo (Русский)</option>
+            <option value="en">Inglês (English)</option>
+            <option value="es">Espanhol (Español)</option>
+            <option value="pt">Português (Brasil)</option>
+            <option value="de">Alemão (Deutsch)</option>
+            <option value="fr">Francês (Français)</option>
+            <option value="it">Italiano (Italiano)</option>
+            <option value="zh-CN">Chinês (中文)</option>
+            <option value="ja">Japonês (日本語)</option>
+          </select>
+        </div>
+        <p class="section-caption">
+          Digite no campo e aperte <strong>Tab</strong> para converter antes de enviar.
+        </p>
+      </section>
+
+      <!-- Tecla do Hover -->
+      <section class="section">
+        <div class="section-header">
+          <span class="section-title">Tecla do Hover</span>
+        </div>
+        <div class="segmented-control" id="keySelector">
+          <button type="button" class="segment active" data-key="Control">Ctrl</button>
+          <button type="button" class="segment" data-key="Alt">Alt</button>
+          <button type="button" class="segment" data-key="Shift">Shift</button>
+        </div>
+      </section>
+
+      <!-- Ações Rápidas -->
+      <section class="section action-section">
+        <button type="button" class="action-btn primary" id="btnTranslateScreen">
+          <span>Traduzir mensagens da tela</span>
+          <kbd class="shortcut">Alt + T</kbd>
+        </button>
+        <button type="button" class="action-btn secondary" id="btnRestoreAll">
+          <span>Restaurar tudo ao original</span>
+        </button>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <button type="button" id="clearCacheBtn" class="link-btn">Limpar cache</button>
+      <span id="saveStatus" class="status-text">Pronto</span>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
